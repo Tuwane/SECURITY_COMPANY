@@ -1,0 +1,33 @@
+{% extends "system/base.html" %}
+{% block content %}
+
+<h3>Guards</h3>
+<a href="{% url 'add_guard' %}" class="btn btn-dark mb-3">Add Guard</a>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>ID Number</th>
+            <th>Phone</th>
+            <th>Status</th>
+            <th>Profile</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for g in guards %}
+        <tr>
+            <td>{{ g.first_name }} {{ g.last_name }}</td>
+            <td>{{ g.id_number }}</td>
+            <td>{{ g.phone }}</td>
+            <td>{{ g.status }}</td>
+            <td>
+                <a href="/guards/{{ g.id }}/" class="btn btn-sm btn-outline-dark">View</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

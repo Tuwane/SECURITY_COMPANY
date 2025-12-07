@@ -1,0 +1,39 @@
+{% extends "system/base.html" %}
+{% block content %}
+
+<h3>{{ guard.first_name }} {{ guard.last_name }}</h3>
+
+<p><b>ID Number:</b> {{ guard.id_number }}</p>
+<p><b>Phone:</b> {{ guard.phone }}</p>
+<p><b>Status:</b> {{ guard.status }}</p>
+<p><b>Address:</b> {{ guard.address }}</p>
+
+<hr>
+
+<h4>Deployments</h4>
+
+{% if deployments %}
+<ul>
+    {% for d in deployments %}
+    <li>{{ d.client_name }} — {{ d.location }} (Active: {{ d.is_active }})</li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No deployments found.</p>
+{% endif %}
+
+<hr>
+
+<h4>Contracts</h4>
+
+{% if contracts %}
+<ul>
+    {% for c in contracts %}
+    <li>{{ c.contract_title }} ({{ c.start_date }})</li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No contracts found.</p>
+{% endif %}
+
+{% endblock %}
